@@ -143,6 +143,18 @@
     }
   }
 
+  // ---------------------------------------------------------------- a different line on every visit
+  const wq = document.querySelector('.wquote[data-pool]');
+  if (wq) {
+    try {
+      const pool = JSON.parse(wq.dataset.pool);
+      const pick = pool[Math.floor(Math.random() * pool.length)];
+      wq.querySelector('p').textContent = pick.q;
+      const a = wq.querySelector('figcaption a');
+      a.textContent = pick.t; a.href = pick.s + '.html';
+    } catch (e) { /* keep the line that's already there */ }
+  }
+
   // ---------------------------------------------------------------- search
   const q = document.getElementById('q');
   const results = document.getElementById('results');
