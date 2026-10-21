@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crossposting Helper - Valerie</title>
+<meta name="description" content="I built a desktop app because I was losing track of my own posts">
+<link rel="canonical" href="https://valerie-4659.github.io/writing/crossposting-helper.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://valerie-4659.github.io/writing/crossposting-helper.html">
+<meta property="og:title" content="Crossposting Helper - Valerie">
+<meta property="og:description" content="I built a desktop app because I was losing track of my own posts">
+<meta property="og:image" content="https://valerie-4659.github.io/writing/img/2085620419516633180-cover.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@valerie_4659">
+<meta name="theme-color" content="#09090C">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="article-page">
+<div class="progress" aria-hidden="true"><span></span></div>
+<header class="topbar">
+  <a class="brand" href="/"><svg class="mark" viewBox="30.0 22.0 560.0 622.0" aria-hidden="true"><path fill="#F2A3B5" d="M108,164C104,132 88,100 60,66C53,118 57,170 84,206L80,172L108,164ZM512,164C516,132 532,100 560,66C567,118 563,170 536,206L540,172L512,164Z"/><path fill="currentColor" d="M310,640C262,575 192,410 118,222C106,196 92,179 76,166L108,164C104,132 88,100 60,66C53,118 57,170 84,206C54,184 34,150 34,116C35,84 40,52 46,26C102,62 150,98 180,135C196,153 206,164 228,165L258,165C240,174 226,187 222,207L222,222L317.8,463.7L424,222L424,207C420,187 406,174 388,165L418,165C434.8,164 441.1,153 451.1,135C470,98 518,62 574,26C580,52 585,84 586,116C586,150 566,184 536,206C563,170 567,118 560,66C532,100 516,132 512,164L544,166C528,179 514,196 502,222C435.7,410 358,575 310,640Z"/></svg><span>Valerie</span></a>
+  <a class="toplink" href="./">Writing</a>
+</header>
+<main>
+<article class="article">
+  <div class="cover"><img src="img/2085620419516633180-cover.webp" alt="" fetchpriority="high"></div>
+  <header class="ahead">
+    <a class="kicker" href="./#tools">Tools I build</a>
+    <h1>Crossposting Helper</h1>
+    <p class="meta"><time datetime="2026-08-07">7 August 2026</time><span>7 min read</span></p>
+  </header>
+  <div class="body">
+<p><strong><em>I built a desktop app because I was losing track of my own posts</strong></em></p>
+<p>For a while my posting workflow was a spreadsheet. One column per platform, one row per image, and a lot of squinting to work out whether that particular render had already gone to Bluesky or only to X. Then I would pick something at random, realise halfway through writing the caption that I had posted it three weeks ago, and start over.</p>
+<p>So I built the thing I actually wanted. It is called Crosspost Helper, it runs on your own machine, and it is free:</p>
+<p><a href="https://valerie-4659.itch.io/crossposthelper">https://valerie-4659.itch.io/crossposthelper</a></p>
+<figure><img src="img/2085620419516633180-0.webp" alt="" loading="lazy" decoding="async"></figure>
+<h2>The loop it is built around</h2>
+<p>Point it at your image folders. It indexes them, reads the generation metadata out of the files, and from then on the loop is:</p>
+<p><strong>Pick</strong> an image you have not posted to this platform yet. <strong>Generate</strong> a caption in your voice. <strong>Send</strong> the image and the text into the composer. <strong>Mark</strong> it as posted. Next.</p>
+<p>Everything else in the app exists to make one of those four steps less annoying.</p>
+<h2>Picking</h2>
+<p>The Picker draws a random image that is not already posted to the platform you have selected. Not a dice roll, though: it is a fair shuffle. Every eligible image comes up once before any of them repeats, and a counter tells you which round you are in. When a round runs out it starts a fresh one instead of quietly giving you nothing.</p>
+<p>You can narrow the pool before drawing. Folder, rating, date, tags, dominant colour. The tag box suggests tags that actually exist in your library, with the number of images behind each one, so you are not typing blindly into a booru vocabulary and hoping. Colours with nothing behind them are not offered at all - a filter that can only return nothing should not be a button.</p>
+<p>If the draw is not the one you wanted, you can browse the siblings in the same folder and swap in an alternative. Everything downstream follows the swap. Or pick several at once for a carousel post, capped at what the platform actually accepts.</p>
+<h2>Writing</h2>
+<p>This is the part that took the longest, because "AI writes your caption" is usually a disappointment. Here is what it does instead.</p>
+<p><strong>Post types.</strong> Engagement, story, morning greeting, good-night, and a QT event format with its fixed layout and credit line.</p>
+<p><strong>Two dials that do not interfere with each other.</strong> One is how explicit the text gets: clean, suggestive, sensual, explicit, or auto to take it from the image. The other is how it sounds: romantic, dreamy, playful, teasing, personal, matter-of-fact, melancholic, bold.</p>
+<p>Those used to be one control, and that was a mistake. "Dreamy" is not a heat level, it is a mood, and having it sit in the middle of a scale between "soft" and "sensual" meant you could never ask for a dreamy explicit post or a dry tender one. Now you can hold one and change the other.</p>
+<figure><img src="img/2085620419516633180-1.webp" alt="" loading="lazy" decoding="async"></figure>
+<p><strong>Personas, with actual examples.</strong> You define a voice once - tone, emoji habits, free-form personality rules. Then, and this is the part that matters, you paste in real posts of yours as voice samples. A few get rotated into every generation as examples.</p>
+<p>Describing a voice in adjectives barely works. Showing a model three things you actually wrote works enormously better, because it copies sentence rhythm, word choice, punctuation habits and where your emojis land instead of following a list of instructions. There is a button on every finished post that adds it back to the sample set, so the voice sharpens the more you use it.</p>
+<p><strong>Refine mode.</strong> Sometimes I know exactly what I want to say and just cannot be bothered to make it good. So I type it roughly, in German, half-punctuated, and it comes back rewritten in English in my voice and expanded to fill the length I asked for - keeping every idea, name and detail I put in. Not translated. Rewritten as though I had written it in English in the first place.</p>
+<p>In this mode the draft outranks the image. The picture only fills in detail where the draft is thin, instead of quietly turning my post into yet another description of what is already visible.</p>
+<p><strong>Against everything sounding the same.</strong> Four separate things, because there were four separate causes. Every run draws a different structural shape, so posts do not all follow one skeleton. Different voice samples each time. A blacklist of the phrases every model reaches for first - if you have ever read<br>"the air is thick with" one time too many, you know the ones. And the last few posts you made on that platform go back in as "do not go here again", because the model otherwise has no memory between calls and will happily reuse last week's opening line.</p>
+<p>On top of that you can generate up to three independent drafts at once and keep the one that landed. Throwing the weak one away beats editing it.</p>
+<figure><img src="img/2085620419516633180-2.webp" alt="" loading="lazy" decoding="async"></figure>
+<p><strong>Tags that behave.</strong> Keep your own approved list per platform, sorted into three groups: tags that go on every post, tags picked because they match this particular image, and long shots used only when the match is obvious. A tag can be gated behind a content level, so the spicy ones can never land on a tame picture. Mandatory tags are enforced after generation and invented tags are dropped, because telling a model "only use these" is a suggestion, not a<br>guarantee.</p>
+<p><strong>It shows you what it saw.</strong> Every generation returns its own reading of the image - level, mood, emotion, tension - in one line under the result. When a caption is off-key, you can usually see immediately that it misread the picture, and one click pins the correct level for the next attempt. That beats guessing.</p>
+<h2>Sending</h2>
+<p>A companion browser extension takes the queued images and the generated text and fills the composer for you on X, Bluesky and DeviantArt. You choose how much it sends: images with text and hashtags, images and text without hashtags, or images only with the text copied to your clipboard for pasting where you want it.</p>
+<p>There is also an opt-out on X that attaches everything but does not post, so you can hand it over to X's own scheduler.</p>
+<p>CivitAI and Bluesky can be posted to directly from the app, uploading and publishing without a browser in the loop at all.</p>
+<h2>Keeping track</h2>
+<p>Every image carries a status per platform. Marking one as posted also marks every file that shares its stem, so the upscale, the variant and the original do not go out as three separate posts a week apart. History shows what went where and when. Stats turns the same data into something you can actually look at.</p>
+<p>This is the boring part, and it is the entire reason the app exists.</p>
+<h2>Understanding your own library</h2>
+<p>Optional, and it all runs locally on your machine. Models download on demand and nothing analyses anything until you press the button.</p>
+<ul><li>Tagging, which then drives search, filters and the picker's tag pool</li><li>Semantic search, so you can look for what an image <em>is</em> rather than what the file happens to be called</li><li>Grouping visually similar shots, so a batch of forty near-identical renders collapses into one stack you can pick the best from</li><li>Dominant colour, for filtering the library or the random draw</li><li>Duplicate detection across folders, for the re-encodes you forgot about</li><li>Filtering by how many people are in the frame</li></ul>
+<h2>Generating and upscaling</h2>
+<p>Video prompts tuned per model - WAN, Kling, Seedance, Grok Imagine, Vidu and others. Each gets its own phrasing order, word budget and content rules, so a prompt written for a permissive model and one written for a strict one are genuinely different texts instead of one prompt that half of them reject.</p>
+<p>Wavespeed runs image and video jobs from inside the app, with a queue that survives restarts. Topaz upscaling is in there too, including Bloom 2, with the enhancement prompt generated for you from the image.</p>
+<figure><img src="img/2085620419516633180-4.webp" alt="" loading="lazy" decoding="async"></figure>
+<h2>What it does not do</h2>
+<p>It does not have an account. It does not phone home. There is no telemetry and no sync. Your library, your posting history and your keys are a plain database file in your own user folder, and if you delete the app they go with it.</p>
+<p>The AI features are bring-your-own-key - OpenAI, Anthropic, Grok or Gemini - and bill to your own provider account. Nothing is proxied through anything of mine, because I do not want to run a service and you should not want me to either.</p>
+<p>And it does not post anything on its own. Direct posting and the extension only act when you click.</p>
+<h2>Getting it</h2>
+<p><a href="https://valerie-4659.itch.io/crossposthelper">https://valerie-4659.itch.io/crossposthelper</a></p>
+<p>macOS, Windows and Linux. The builds are unsigned, so your operating system will be suspicious the first time - on macOS right-click and choose Open rather than double-clicking, on Windows it is More info then Run anyway. The itch page has the full steps, including the Terminal one-liner for when macOS is being especially stubborn.</p>
+<p>Once it is running: add your platforms, point it at your folders, and if you want generated captions, drop in an API key and set up a persona with a handful of your own posts as samples. That last step is genuinely the difference between output that sounds like a language model and output that sounds like you. Do not skip it.</p>
+  </div>
+  <div class="endmark"><svg class="mark" viewBox="30.0 22.0 560.0 622.0" aria-hidden="true"><path fill="#F2A3B5" d="M108,164C104,132 88,100 60,66C53,118 57,170 84,206L80,172L108,164ZM512,164C516,132 532,100 560,66C567,118 563,170 536,206L540,172L512,164Z"/><path fill="currentColor" d="M310,640C262,575 192,410 118,222C106,196 92,179 76,166L108,164C104,132 88,100 60,66C53,118 57,170 84,206C54,184 34,150 34,116C35,84 40,52 46,26C102,62 150,98 180,135C196,153 206,164 228,165L258,165C240,174 226,187 222,207L222,222L317.8,463.7L424,222L424,207C420,187 406,174 388,165L418,165C434.8,164 441.1,153 451.1,135C470,98 518,62 574,26C580,52 585,84 586,116C586,150 566,184 536,206C563,170 567,118 560,66C532,100 516,132 512,164L544,166C528,179 514,196 502,222C435.7,410 358,575 310,640Z"/></svg></div>
+  <p class="origin">First published on <a href="https://x.com/valerie_4659/status/2085620419516633180">X</a>. Replies and conversation live there.</p>
+</article>
+<nav class="prevnext" aria-label="More writing">
+  <a class="pn" href="communication-in-text-part-iii-cultural-and-social-difference.html"><span class="pn-label">Older</span><span class="pn-title">Communication in Text, Part III: Cultural and social difference</span></a>
+  <a class="pn" href="two-hearts-one-kingdom.html"><span class="pn-label">Newer</span><span class="pn-title">Two Hearts, One Kingdom</span></a>
+</nav>
+<p class="backall"><a href="./">All writing</a></p>
+</main>
+<footer class="sitefoot">
+  <span>&copy; 2026 Valerie</span>
+  <span>No cookies. No trackers.</span>
+</footer>
+<script src="reader.js" defer></script>
+</body>
+</html>

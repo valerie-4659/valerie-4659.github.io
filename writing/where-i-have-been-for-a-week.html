@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where I have been for a week - Valerie</title>
+<meta name="description" content="Nothing dramatic. Just friction, everywhere.">
+<link rel="canonical" href="https://valerie-4659.github.io/writing/where-i-have-been-for-a-week.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://valerie-4659.github.io/writing/where-i-have-been-for-a-week.html">
+<meta property="og:title" content="Where I have been for a week - Valerie">
+<meta property="og:description" content="Nothing dramatic. Just friction, everywhere.">
+<meta property="og:image" content="https://valerie-4659.github.io/writing/img/2087584298232635900-cover.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@valerie_4659">
+<meta name="theme-color" content="#09090C">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="article-page">
+<div class="progress" aria-hidden="true"><span></span></div>
+<header class="topbar">
+  <a class="brand" href="/"><svg class="mark" viewBox="30.0 22.0 560.0 622.0" aria-hidden="true"><path fill="#F2A3B5" d="M108,164C104,132 88,100 60,66C53,118 57,170 84,206L80,172L108,164ZM512,164C516,132 532,100 560,66C567,118 563,170 536,206L540,172L512,164Z"/><path fill="currentColor" d="M310,640C262,575 192,410 118,222C106,196 92,179 76,166L108,164C104,132 88,100 60,66C53,118 57,170 84,206C54,184 34,150 34,116C35,84 40,52 46,26C102,62 150,98 180,135C196,153 206,164 228,165L258,165C240,174 226,187 222,207L222,222L317.8,463.7L424,222L424,207C420,187 406,174 388,165L418,165C434.8,164 441.1,153 451.1,135C470,98 518,62 574,26C580,52 585,84 586,116C586,150 566,184 536,206C563,170 567,118 560,66C532,100 516,132 512,164L544,166C528,179 514,196 502,222C435.7,410 358,575 310,640Z"/></svg><span>Valerie</span></a>
+  <a class="toplink" href="./">Writing</a>
+</header>
+<main>
+<article class="article">
+  <div class="cover"><img src="img/2087584298232635900-cover.webp" alt="" fetchpriority="high"></div>
+  <header class="ahead">
+    <a class="kicker" href="./#tools">Tools I build</a>
+    <h1>Where I have been for a week</h1>
+    <p class="meta"><time datetime="2026-08-12">12 August 2026</time><span>6 min read</span></p>
+  </header>
+  <div class="body">
+<p>Nothing dramatic. Just friction, everywhere.</p>
+<p>Builds happened on my machine. That sounds fine until you notice what it means: the Windows and Linux versions were cross-compiled on a Mac, by one person, at whatever moment felt right. If a build was broken for an hour, nobody could tell whether they had the broken one.</p>
+<p>Versions were vague. You downloaded a file, and if a newer one existed you found out by checking manually. There were no release notes attached to the thing you actually downloaded, so "what changed?" had no good answer.</p>
+<p>And when something went wrong for you, there was nowhere sensible to say so.</p>
+<h2>What GitHub gives that a storefront cannot</h2>
+<p>Actually, I wanted to stick with <a href="https://itch.io/">itch.io</a>—no need for yet another GitHub account or SSH key. But in the end, there just aren't enough features. I need feedback; I want to see if people are using the tools. And that's why GitHub is the better choice.</p>
+<h2>The tools</h2>
+<figure><img src="img/2087584298232635900-0.webp" alt="" loading="lazy" decoding="async"></figure>
+<p><strong>Crosspost Helper</strong> - a local library of everything you have generated, that remembers where each image has already been. Point it at your folders and it indexes them, reads the generation data out of the files, and from then on the loop is: pick something you have not posted to this platform yet, write the caption, send it to the composer, mark it as posted. The picking is a fair shuffle rather than a dice roll, so every eligible image comes up once before any of them repeats. The point of the whole thing is that the same render never quietly goes to Bluesky twice.<br><a href="https://github.com/valerie-4659/crossposthelper-app">https://github.com/valerie-4659/crossposthelper-app</a></p>
+<figure><img src="img/2087584298232635900-1.webp" alt="" loading="lazy" decoding="async"></figure>
+<p><strong>ArticleHelper</strong> - CivitAI's article editor is a browser text box: no drafts you can trust, no version history, no way to reuse a heading style across twenty articles. This is a desktop editor for the writing part, which then hands the finished thing over. Define your heading styles once, colour and font and Unicode lettering per level, and every article you export afterwards uses them. Keep several language versions side by side with the untranslated lines highlighted, and split a long piece into a series at the cursor. When you are done, Copy HTML puts the whole thing on the clipboard with the styles already inlined, so pasting into CivitAI needs no restyling on the other side. There is also a planning canvas for story worlds, and the bounty side: import entries from a URL, rate them, then drag winners into place. (In the future, the tool will become independent of CivitAI and platform-agnostic.)<br><a href="https://github.com/valerie-4659/articlehelper-app">https://github.com/valerie-4659/articlehelper-app</a></p>
+<figure><img src="img/2087584298232635900-2.webp" alt="" loading="lazy" decoding="async"></figure>
+<p><strong>Prompting Helper</strong> - the one that keeps characters consistent. Build prompts from pieces you can reuse instead of retyping them, keep your characters and their styles as things rather than as text you paste, and manage the model library behind all of it. It used to be called SD Prompt Manager Tool, and it has the longest history of the eight: three thousand releases' worth of small changes, with five and a half thousand tests underneath. It was the last one to move across, and it moved this week.<br><a href="https://github.com/valerie-4659/promptinghelper-app">https://github.com/valerie-4659/promptinghelper-app</a></p>
+<figure><img src="img/2087584298232635900-3.webp" alt="" loading="lazy" decoding="async"></figure>
+<p><strong>Metadata Helper</strong> - your prompt, seed and sampler live inside the image file. Then you upscale it, run a face fix, or convert it to JPEG for uploading, and they are gone, because the tool that touched it never carried them over. This copies them back: pick the image that still has its data, pick the ones that lost it, press one button. PNG to PNG, JPEG to JPEG, and across the two in either direction, which is where it usually gets lost. The metadata is a text box rather than a black box, so you can edit the prompt or strip a LoRA before writing.<br><a href="https://github.com/valerie-4659/metadatahelper-app">https://github.com/valerie-4659/metadatahelper-app</a></p>
+<figure><img src="img/2087584298232635900-4.webp" alt="" loading="lazy" decoding="async"></figure>
+<p><strong>Image Workflow Helper</strong> - generating the image is the short part. What takes the time is everything around it: which of the eleven versions was the good one, which prompt produced it, what still needs an upscale, and where the finished file went. So this puts it on a board - Backlog, In Progress, Done - where a job carries its versions, its metadata and its thumbnails with it. When one version wins, a wizard walks you through picking it, clearing out the alternatives, checking the generation data and writing the result into a clean final folder with the original kept beside it. Deleting moves things to trash rather than removing them.<br><a href="https://github.com/valerie-4659/imageworkflowhelper-app">https://github.com/valerie-4659/imageworkflowhelper-app</a></p>
+<figure><img src="img/2087584298232635900-5.webp" alt="" loading="lazy" decoding="async"></figure>
+<p><strong>ArtQueue</strong> - right-click, Save as, pick a folder, rename, repeat. Forty times, and at the end everything sits in Downloads with names like dd8f2a1b.jpg. This queues them instead: click what you want while you browse and the extension downloads them in the background into the folder you picked. With a Grok key it also sorts them as they arrive, filing each one by what is actually in the picture, using tag priority lists you define so the folder choice is predictable rather than whatever the model thought of first. Works on DeviantArt and <a href="https://sta.sh/">sta.sh</a>, on CivitAI, and on luscious. It used to be called DeviantArt Downloader, back when it only knew one site.<br><a href="https://github.com/valerie-4659/artqueue-app">https://github.com/valerie-4659/artqueue-app</a></p>
+<figure><img src="img/2087584298232635900-6.webp" alt="" loading="lazy" decoding="async"></figure>
+<p><strong>Civit Helper</strong> - you are going through a creator's gallery and you want to react to thirty images and save them to a collection. On CivitAI that is thirty times: hover, react, open the menu, pick the collection, confirm. Somewhere around the tenth you stop bothering. This adds checkboxes. Tick what you want, press one button, and it works through them one at a time with small pauses, which is politeness towards the site rather than something to optimise away. It only ever adds reactions that are not already there, so it cannot un-react anything, and buzz tipping is off unless you switch it on. It used to be called Civitai Bulk React + Save.<br><a href="https://github.com/valerie-4659/civithelper-app">https://github.com/valerie-4659/civithelper-app</a></p>
+<figure><img src="img/2087584298232635900-7.webp" alt="" loading="lazy" decoding="async"></figure>
+<p><strong>XHelper</strong> - answering other creators well takes time, and answering them badly is worse than not answering. A one-word compliment under the fortieth image reads exactly like what it is. This drafts the reply you would have written if you had twenty minutes: shaped by who the person is, what you have said to them before, and what is actually in the post. It filters its own output, so a suggestion that repeats something you already sent to that person, or that contains a phrase on your never-say list, is not offered at all. And it never posts anything by itself. No autopilot, no batch approve, and no code in it that clicks the Post button: it writes into the composer and stops there. (Currently alpha, and the interface is German.)<br><a href="https://github.com/valerie-4659/xhelper-app">https://github.com/valerie-4659/xhelper-app</a></p>
+<p>All eight have downloads now: five desktop apps and three browser extensions, each with its own release page, its notes attached to the build, and somewhere to tell me when it breaks.</p>
+<figure><img src="img/2087584298232635900-8.webp" alt="" loading="lazy" decoding="async"></figure>
+<h2>What I would like from you</h2>
+<p>Use them. And when one of them annoys you, open an issue on its page instead of quietly giving up on it. Half of what is in these tools exists because somebody told me a thing was irritating.</p>
+<p>Everything is free, everything runs on your own machine, and nothing phones home.</p>
+<p>Back to building. 💕</p>
+  </div>
+  <div class="endmark"><svg class="mark" viewBox="30.0 22.0 560.0 622.0" aria-hidden="true"><path fill="#F2A3B5" d="M108,164C104,132 88,100 60,66C53,118 57,170 84,206L80,172L108,164ZM512,164C516,132 532,100 560,66C567,118 563,170 536,206L540,172L512,164Z"/><path fill="currentColor" d="M310,640C262,575 192,410 118,222C106,196 92,179 76,166L108,164C104,132 88,100 60,66C53,118 57,170 84,206C54,184 34,150 34,116C35,84 40,52 46,26C102,62 150,98 180,135C196,153 206,164 228,165L258,165C240,174 226,187 222,207L222,222L317.8,463.7L424,222L424,207C420,187 406,174 388,165L418,165C434.8,164 441.1,153 451.1,135C470,98 518,62 574,26C580,52 585,84 586,116C586,150 566,184 536,206C563,170 567,118 560,66C532,100 516,132 512,164L544,166C528,179 514,196 502,222C435.7,410 358,575 310,640Z"/></svg></div>
+  <p class="origin">First published on <a href="https://x.com/valerie_4659/status/2087584298232635900">X</a>. Replies and conversation live there.</p>
+</article>
+<nav class="prevnext" aria-label="More writing">
+  <a class="pn" href="two-hearts-one-kingdom.html"><span class="pn-label">Older</span><span class="pn-title">Two Hearts, One Kingdom</span></a>
+  <a class="pn" href="i-am-not-the-victim-of-my-past.html"><span class="pn-label">Newer</span><span class="pn-title">I am not the victim of my past</span></a>
+</nav>
+<p class="backall"><a href="./">All writing</a></p>
+</main>
+<footer class="sitefoot">
+  <span>&copy; 2026 Valerie</span>
+  <span>No cookies. No trackers.</span>
+</footer>
+<script src="reader.js" defer></script>
+</body>
+</html>
