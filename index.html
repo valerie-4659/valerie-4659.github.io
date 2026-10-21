@@ -5,8 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Valerie</title>
 <meta name="description" content="Valerie - stories, songs and images. Find me on X, YouTube, Civitai, itch.io and GitHub.">
+<link rel="canonical" href="https://valerie-4659.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://valerie-4659.github.io/">
 <meta property="og:title" content="Valerie">
-<meta property="og:description" content="Stories, songs and images.">
+<meta property="og:description" content="Writer, songwriter, image-maker. My brain never closes a single tab.">
+<meta property="og:image" content="https://valerie-4659.github.io/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Valerie - red hair, cat ears, and the fox V">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@valerie_4659">
+<meta name="twitter:title" content="Valerie">
+<meta name="twitter:description" content="Writer, songwriter, image-maker. My brain never closes a single tab.">
+<meta name="twitter:image" content="https://valerie-4659.github.io/og.jpg">
 <meta name="theme-color" content="#09090C">
 <meta name="referrer" content="no-referrer">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22-80%20-80%201047%201114%22%3E%3Crect%20x%3D%22-80%22%20y%3D%22-80%22%20width%3D%221047%22%20height%3D%221114%22%20rx%3D%22200%22%20fill%3D%22%2309090C%22/%3E%3Cpath%20fill%3D%22%23D3141C%22%20d%3D%22M18%2C0%20L17%2C17%20L4%2C79%20L0%2C113%20L2%2C154%20L13%2C193%20L25%2C216%20L42%2C238%20L62%2C258%20L91%2C279%20L63%2C241%20L50%2C213%20L43%2C190%20L37%2C160%20L33%2C121%20L34%2C76%20L36%2C59%20L38%2C58%20L54%2C70%20L73%2C89%20L95%2C119%20L112%2C151%20L120%2C171%20L126%2C195%20L125%2C199%20L69%2C200%20L87%2C218%20L103%2C238%20L119%2C263%20L132%2C289%20L284%2C658%20L333%2C769%20L366%2C834%20L406%2C901%20L443%2C954%20L467%2C921%20L503%2C864%20L527%2C821%20L555%2C765%20L601%2C661%20L756%2C285%20L770%2C258%20L786%2C234%20L800%2C217%20L818%2C200%20L762%2C199%20L761%2C195%20L770%2C163%20L788%2C125%20L813%2C90%20L833%2C70%20L849%2C58%20L851%2C59%20L853%2C73%20L854%2C126%20L846%2C183%20L838%2C211%20L827%2C236%20L812%2C259%20L796%2C279%20L826%2C257%20L847%2C236%20L859%2C221%20L874%2C194%20L885%2C156%20L887%2C140%20L887%2C107%20L883%2C77%20L871%2C21%20L869%2C1%20L785%2C53%20L721%2C98%20L702%2C114%20L669%2C147%20L649%2C171%20L628%2C191%20L614%2C197%20L603%2C199%20L524%2C199%20L551%2C216%20L571%2C236%20L584%2C261%20L586%2C274%20L585%2C289%20L570%2C333%20L456%2C625%20L443%2C654%20L317%2C334%20L302%2C290%20L302%2C265%20L313%2C240%20L335%2C217%20L363%2C199%20L288%2C199%20L272%2C196%20L259%2C190%20L240%2C172%20L222%2C150%20L194%2C121%20L162%2C94%20L106%2C55Z%22/%3E%3C/svg%3E">
@@ -222,6 +234,52 @@ footer {
 }
 
 
+/* sections below the link index */
+.block { margin-top: clamp(64px, 10vh, 120px); }
+.block h2 {
+  font-family: var(--display); font-style: italic; font-weight: 400;
+  font-variation-settings: "opsz" 16; -webkit-text-stroke: .006em currentColor;
+  font-size: clamp(28px, 2.4vw, 38px); line-height: 1.1; letter-spacing: -.01em;
+  margin: 0 0 22px;
+}
+.block h2 .hint { display: block; margin-top: 8px; font-family: var(--text); font-style: normal;
+  font-size: 15px; letter-spacing: 0; color: var(--muted); -webkit-text-stroke: 0; }
+
+/* latest song */
+.player { position: relative; aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; background: #0f1424;
+  box-shadow: 0 30px 80px -30px rgba(0,0,0,.8), 0 0 0 1px var(--line); }
+.play-card { all: unset; box-sizing: border-box; position: absolute; inset: 0; display: block; cursor: inherit; }
+.play-card img { position: absolute; right: 0; top: 0; height: 100%; width: 72%; object-fit: cover; object-position: 50% 22%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%); mask-image: linear-gradient(90deg, transparent 0%, #000 45%);
+  transition: transform 1.2s var(--ease); }
+.play-card::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(9,9,12,.7) 0%, transparent 45%); pointer-events: none; }
+.song-meta { position: absolute; left: clamp(18px, 3vw, 34px); bottom: clamp(16px, 3vw, 30px); z-index: 2; }
+.song-title { display: block; font-family: var(--display); font-style: italic; font-weight: 500;
+  font-variation-settings: "opsz" 24; -webkit-text-stroke: .008em currentColor;
+  font-size: clamp(30px, 3.4vw, 54px); line-height: .95; letter-spacing: -.02em; }
+.song-sub { display: block; margin-top: 10px; font-size: 14px; color: var(--muted); }
+.play { position: absolute; left: clamp(18px, 3vw, 34px); top: clamp(18px, 3vw, 30px); z-index: 2;
+  width: 62px; height: 62px; border-radius: 50%; background: var(--red); display: grid; place-items: center;
+  box-shadow: 0 0 0 0 rgba(211,20,28,.5); transition: transform .5s var(--ease), box-shadow .6s ease; }
+.play svg { width: 20px; margin-left: 4px; fill: var(--cream); }
+.eq { position: absolute; right: 18px; bottom: 18px; z-index: 2; display: flex; gap: 3px; align-items: flex-end; height: 18px; }
+.eq i { width: 3px; background: var(--lav); border-radius: 2px; height: 30%; animation: eq 1.2s ease-in-out infinite; }
+.eq i:nth-child(2) { animation-delay: -.3s; } .eq i:nth-child(3) { animation-delay: -.6s; }
+.eq i:nth-child(4) { animation-delay: -.9s; } .eq i:nth-child(5) { animation-delay: -.45s; }
+@keyframes eq { 50% { height: 100%; } }
+.play-card:hover img, .play-card:focus-visible img { transform: scale(1.04); }
+.play-card:hover .play, .play-card:focus-visible .play { transform: scale(1.08); box-shadow: 0 0 0 12px rgba(211,20,28,.18); }
+.play-card:focus-visible { outline: 2px solid var(--lav); outline-offset: -2px; }
+.player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.note { margin: 12px 0 0; font-size: 13px; color: var(--muted); }
+.note a { color: var(--cream); text-underline-offset: 3px; text-decoration-color: rgba(238,228,211,.35); }
+.note a:hover { color: var(--lav); }
+/* ink-drop cursor on devices with a mouse */
+@media (pointer: fine) {
+  html, body { cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2220%22%20height%3D%2228%22%20viewBox%3D%220%200%2020%2028%22%3E%3Cpath%20d%3D%22M10%201.5C10%201.5%202%2011.5%202%2017.5a8%208%200%200%200%2016%200C18%2011.5%2010%201.5%2010%201.5Z%22%20fill%3D%22%23D3141C%22%20stroke%3D%22%2309090C%22%20stroke-width%3D%221.5%22/%3E%3Cpath%20d%3D%22M6%2017.5a4%204%200%200%201%202.5-3.7%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.4%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.6%22/%3E%3C/svg%3E") 10 2, auto; }
+  a, button, [role="button"] { cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2233%22%20viewBox%3D%220%200%2020%2028%22%3E%3Cpath%20d%3D%22M10%201.5C10%201.5%202%2011.5%202%2017.5a8%208%200%200%200%2016%200C18%2011.5%2010%201.5%2010%201.5Z%22%20fill%3D%22%23B69CE6%22%20stroke%3D%22%2309090C%22%20stroke-width%3D%221.5%22/%3E%3Cpath%20d%3D%22M6%2017.5a4%204%200%200%201%202.5-3.7%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.4%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.6%22/%3E%3C/svg%3E") 12 2, pointer; }
+}
 /* drifting glitter */
 #glitter { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 6; }
 @media (prefers-reduced-motion: reduce) {
@@ -284,6 +342,19 @@ footer {
         <li><a href="https://github.com/valerie-4659"><span class="name">GitHub</span><span class="what">Tools &amp; code</span></a></li>
       </ul>
     </nav>
+
+    <section class="block" aria-labelledby="song-h">
+      <h2 id="song-h">Latest song<span class="hint">Fresh out of my head and into your ears.</span></h2>
+      <div class="player" id="player" data-video="U3F1r2V8xF8">
+        <button class="play-card" type="button" aria-label="Play Liar In My Voice, official music video">
+          <img src="song.webp" alt="" width="900" height="842" loading="lazy">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 20 22"><path d="M2 1.5v19l17-9.5z"/></svg></span>
+          <span class="song-meta"><span class="song-title">Liar In My Voice</span><span class="song-sub">Official music video, 3:06</span></span>
+          <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        </button>
+      </div>
+      <p class="note">The video loads from YouTube once you press play. Or <a href="https://www.youtube.com/watch?v=U3F1r2V8xF8">watch it on YouTube</a>.</p>
+    </section>
 
     <footer><span>&copy; 2026 Valerie</span><span>No cookies. No trackers.</span></footer>
   </main>
@@ -385,6 +456,18 @@ footer {
   resize();
   raf = requestAnimationFrame(frame);
 })();
+</script>
+<script>
+document.querySelector("#player .play-card")?.addEventListener("click", () => {
+  const box = document.getElementById("player"), id = box.dataset.video;
+  const f = document.createElement("iframe");
+  f.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&modestbranding=1";
+  f.title = "Liar In My Voice - official music video";
+  f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+  f.allowFullscreen = true;
+  f.referrerPolicy = "strict-origin-when-cross-origin";
+  box.replaceChildren(f);
+});
 </script>
 </body>
 </html>
