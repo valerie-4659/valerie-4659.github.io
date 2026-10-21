@@ -221,6 +221,9 @@ footer {
   .splat-red { display: none; }
 }
 
+
+/* drifting glitter */
+#glitter { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 6; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
@@ -286,5 +289,102 @@ footer {
   </main>
 
 </div>
+<canvas id="glitter" aria-hidden="true"></canvas>
+<script>
+(() => {
+  const cv = document.getElementById("glitter");
+  const ctx = cv.getContext("2d");
+  if (!ctx || matchMedia("(prefers-reduced-motion: reduce)").matches) { cv.remove(); return; }
+
+  // colours from the portrait: cream, lavender, a few red and teal sparks
+  const palette = [
+    [238, 228, 211], [238, 228, 211], [238, 228, 211], [246, 238, 226],
+    [182, 156, 230], [182, 156, 230], [205, 186, 240],
+    [227, 50, 58], [127, 214, 223]
+  ];
+  let W = 0, H = 0, dpr = 1, parts = [];
+  const mouse = { x: -9999, y: -9999 };
+
+  function spawn(randomY) {
+    const c = palette[(Math.random() * palette.length) | 0];
+    const big = Math.random() < 0.12;
+    return {
+      x: Math.random() * W,
+      y: randomY ? Math.random() * H : H + 10,
+      r: big ? 1.6 + Math.random() * 1.6 : 0.5 + Math.random() * 1.1,
+      star: big,
+      c,
+      vy: -(0.08 + Math.random() * 0.28),
+      vx: (Math.random() - 0.5) * 0.08,
+      sway: Math.random() * Math.PI * 2,
+      swaySpeed: 0.004 + Math.random() * 0.01,
+      tw: Math.random() * Math.PI * 2,
+      twSpeed: 0.02 + Math.random() * 0.05,
+      ox: 0, oy: 0
+    };
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.round(Math.min(90, Math.max(28, W * H / 16000)));
+    parts = Array.from({ length: n }, () => spawn(true));
+  }
+
+  function drawStar(x, y, r, a, c) {
+    const L = r * 3.2;
+    ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${a * 0.8})`;
+    ctx.lineWidth = 0.7;
+    ctx.beginPath();
+    ctx.moveTo(x - L, y); ctx.lineTo(x + L, y);
+    ctx.moveTo(x, y - L); ctx.lineTo(x, y + L);
+    ctx.stroke();
+  }
+
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    for (const p of parts) {
+      p.sway += p.swaySpeed; p.tw += p.twSpeed;
+      p.x += p.vx + Math.sin(p.sway) * 0.15;
+      p.y += p.vy;
+
+      // drift softly away from the cursor
+      const dx = p.x + p.ox - mouse.x, dy = p.y + p.oy - mouse.y;
+      const d2 = dx * dx + dy * dy;
+      if (d2 < 14400) {
+        const d = Math.sqrt(d2) || 1, f = (120 - d) / 120 * 1.6;
+        p.ox += dx / d * f; p.oy += dy / d * f;
+      }
+      p.ox *= 0.94; p.oy *= 0.94;
+
+      if (p.y < -12 || p.x < -20 || p.x > W + 20) Object.assign(p, spawn(false));
+
+      const a = 0.25 + 0.75 * Math.pow((Math.sin(p.tw) + 1) / 2, 3);
+      const x = p.x + p.ox, y = p.y + p.oy, c = p.c;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, p.r * 4);
+      g.addColorStop(0, `rgba(${c[0]},${c[1]},${c[2]},${a * 0.55})`);
+      g.addColorStop(1, `rgba(${c[0]},${c[1]},${c[2]},0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(x, y, p.r * 4, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = `rgba(255,255,255,${a * 0.9})`;
+      ctx.beginPath(); ctx.arc(x, y, p.r * 0.6, 0, Math.PI * 2); ctx.fill();
+      if (p.star && a > 0.6) drawStar(x, y, p.r, (a - 0.6) / 0.4, c);
+    }
+    raf = requestAnimationFrame(frame);
+  }
+
+  let raf = 0;
+  addEventListener("resize", resize);
+  addEventListener("pointermove", e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+  addEventListener("pointerleave", () => { mouse.x = mouse.y = -9999; });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) cancelAnimationFrame(raf); else raf = requestAnimationFrame(frame);
+  });
+  resize();
+  raf = requestAnimationFrame(frame);
+})();
+</script>
 </body>
 </html>
