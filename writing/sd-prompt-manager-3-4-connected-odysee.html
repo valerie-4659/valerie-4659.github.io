@@ -33,38 +33,41 @@
     <h1>SD Prompt Manager 3.4 —  Connected Odysee</h1>
     <p class="meta"><time datetime="2026-07-26">26 July 2026</time><span>5 min read</span></p>
   </header>
-  <div class="body">
+  <div class="bodywrap">
+  
+  <div class="body" data-slug="sd-prompt-manager-3-4-connected-odysee">
 <p class="lead">It has been a while since the last release post, and SD Prompt Manager has quietly grown from "a prompt builder with a character library" into a full production environment for AI image work. Here is the tour of what landed.</p>
-<h2>The Prompt Builder</h2>
+<h2 id="the-prompt-builder">The Prompt Builder</h2>
 <p>The builder is a two-column workspace: purpose-built input panels on the left (rating, hierarchical global style, shot &amp; lighting, backgrounds, poses, characters), and a live prompt preview on the right that does far more than display text. The preview is editable in place, can be frozen against regeneration, and lets you click any individual tag to suppress it. A built-in Tag Check flags contradictions like a character who is standing, sitting and lying down at once.</p>
 <p>Seven output modes — Standard, FLUX, Anima, Illustrious, WAN, Krea 2, Z-Image Turbo — change how the prompt is actually written: attention syntax stripped for natural-language models, tag soup rewritten into prose, artist vocabulary switched per model family.</p>
 <figure><img src="img/2081461458492121259-0.webp" alt="" loading="lazy" decoding="async"></figure>
-<h2>Input syntax that compounds</h2>
+<h2 id="input-syntax-that-compounds">Input syntax that compounds</h2>
 <p>A few small features change how fast you work:</p>
 <ul><li>Inline wildcards {red|emerald|midnight blue} anywhere a tag is accepted — seeded and deterministic, so the preview stays stable until you hit Reroll. Weighted variants like ({a|b}:1.2) work too.</li><li>Start a line with # to comment it out of the prompt without deleting it. A/B testing tags becomes one keystroke.</li><li>Group weights wrap whole tag groups as (tag one, tag two:1.20) instead of littering per-tag brackets.</li><li><a href="https://x.com/@char1">@char1</a> placeholders resolve to real character names; <a href="https://x.com/@ca1">@ca1</a> action lines route straight to character 1's block; <a href="https://x.com/@cp1">@cp1</a> overrides its spatial position. All protected from AI rewrites.</li><li>Full wildcard-file support: TXT with sections, YAML with recursive cross-file references, per-card Random/Pick/Freeze controls, search-and-replace dictionaries.</li></ul>
 <figure><img src="img/2081461458492121259-1.webp" alt="" loading="lazy" decoding="async"></figure>
-<h2>Themes with an escalation ladder</h2>
+<h2 id="themes-with-an-escalation-ladder">Themes with an escalation ladder</h2>
 <p>Themes are reusable, self-randomizing tag packages across eight transformer categories (Theme, Pose, Expression, Hair, Makeup, Cloth, Body FX, Pop Char). Every theme carries up to five tiers — SFW, Suggestive, Artistic, Explicit, Extreme — and the pool format (fixed identity tags + variant groups + a random support pool) means the same theme produces a different-but-coherent tag set on every render. Transformer Collections bundle entries across categories and re-randomize within bounds on every render.</p>
 <figure><img src="img/2081461458492121259-2.webp" alt="" loading="lazy" decoding="async"></figure>
-<h2>Boosters: model-aware vocabulary on tap</h2>
+<h2 id="boosters-model-aware-vocabulary-on-tap">Boosters: model-aware vocabulary on tap</h2>
 <p>Six booster rows — Quality, Artist, Light, Camera, Style, Background — inject exactly the vocabulary the current model family responds to. FLUX gets cinematic photography language, Anima gets illustration tags, the Artist booster switches between photographer references, <a href="https://x.com/@handles">@handles</a> and artist: tags per model. The roller never picks two tags from the same semantic family, tags already covered by your checkpoint's quality prompt are excluded, chips can be locked or hidden, and rolled sets save as named combos.</p>
 <figure><img src="img/2081461458492121259-3.webp" alt="" loading="lazy" decoding="async"></figure>
-<h2>AI assistance, cloud to fully local</h2>
+<h2 id="ai-assistance-cloud-to-fully-local">AI assistance, cloud to fully local</h2>
 <p>Seven providers: OpenAI, Gemini, Claude, Grok, GLM, OpenRouter — and Ollama for fully local inference. Global AI Suggest proposes complete scene concepts chosen from your actual libraries (it never invents entries you don't have), with match scores and a creativity slider. The AI Level Builder generates entire five-tier themes from a plain-language description. The AI Optimizer rewrites the whole prompt for a target model with 21 rulesets, including duration-aware video models. And a deterministic local prose rewriter restructures tag soup into natural language with zero API calls.</p>
-<h2>Characters as deep data</h2>
+<h2 id="characters-as-deep-data">Characters as deep data</h2>
 <p>A character carries a region/area tag tree, a dedicated character LoRA routed through the LoRA pipeline, full anatomy configuration with content-tier support, character types with mix mode, facial structure fields (built to fight the same-face problem), and an ancestry system — 46 options describing facial structure only, never colors, so they can't fight your color wildcards. A dedicated preview modal gives every character its own test bench with live TAESD preview and a comparison filmstrip, and restores your production render config when you close it.</p>
 <figure><img src="img/2081461458492121259-4.webp" alt="" loading="lazy" decoding="async"></figure>
-<h2>Jobs are the new center</h2>
+<h2 id="jobs-are-the-new-center">Jobs are the new center</h2>
 <p>The biggest structural change: the Prompt Builder is where you edit a job; the Job Board is where jobs live. Every job owns a fully independent workspace — characters, LoRAs, boosters, settings — so switching jobs never bleeds state. Three lanes (Working, Queue, Done), automatic queue processing, and level chaining: ComfyUI render to upscale to video, each level carrying the result forward, with future levels pre-configurable so an approved job advances into a prepared next stage.</p>
 <p>A review modal with an AI anatomy check (a heads-up for finger and limb errors, not a verdict), auto-download of results into date-organized folders, native notifications, and a dashboard with live service balances round it out.</p>
 <figure><img src="img/2081461458492121259-5.webp" alt="" loading="lazy" decoding="async"></figure>
-<h2>Render anywhere</h2>
+<h2 id="render-anywhere">Render anywhere</h2>
 <p>Three ways to drive ComfyUI: the classic extension path (live workflow editing, mid-pipeline batch filtering, checkpoint rotation), the new Local Direct API — render on your own GPU with no ComfyUI tab open and no custom nodes installed, live preview included — and ComfyUI Cloud. Plus Wavespeed, Magnific, Venice and Bloom AI.</p>
 <p>Any workflow node input can be exposed as an editable panel field, bypass groups work even though the API format has no bypass flag (the app rewires the graph), and regional prompting no longer needs custom nodes — the app extracts region masks from painted color maps itself and routes them onto any image input, which makes regional prompting work on plain Cloud workflows.</p>
-<h2>Coming soon</h2>
+<h2 id="coming-soon">Coming soon</h2>
 <p>A mobile client is in the works: a PWA over your LAN with live render preview, a full character editor, gallery, and camera-roll reference upload — built on the Direct API so your phone can render without ComfyUI even being open on the desktop. Not merged yet, but close.</p>
 <p>Version by version the idea has sharpened: the prompt is just the middle of the pipeline. Upstream sit characters, themes and checkpoint knowledge you curate once and reuse forever; downstream sit jobs, queues, chained services and publishing. The builder ties it together, the syntax keeps it fast, and the AI fills in what you don't feel like doing by hand.</p>
 <p>SD Prompt Manager is free for Windows, macOS and Linux — grab it at <a href="https://valerie-4659.itch.io/sd-prompt-manager">valerie-4659.itch.io/sd-prompt-manager</a>.</p>
+  </div>
   </div>
   <div class="endmark"><svg class="mark" viewBox="30.0 22.0 560.0 622.0" aria-hidden="true"><path fill="#F2A3B5" d="M108,164C104,132 88,100 60,66C53,118 57,170 84,206L80,172L108,164ZM512,164C516,132 532,100 560,66C567,118 563,170 536,206L540,172L512,164Z"/><path fill="currentColor" d="M310,640C262,575 192,410 118,222C106,196 92,179 76,166L108,164C104,132 88,100 60,66C53,118 57,170 84,206C54,184 34,150 34,116C35,84 40,52 46,26C102,62 150,98 180,135C196,153 206,164 228,165L258,165C240,174 226,187 222,207L222,222L317.8,463.7L424,222L424,207C420,187 406,174 388,165L418,165C434.8,164 441.1,153 451.1,135C470,98 518,62 574,26C580,52 585,84 586,116C586,150 566,184 536,206C563,170 567,118 560,66C532,100 516,132 512,164L544,166C528,179 514,196 502,222C435.7,410 358,575 310,640Z"/></svg></div>
   <p class="origin">First published on <a href="https://x.com/valerie_4659/status/2081461458492121259">X</a>. Replies and conversation live there.</p>
