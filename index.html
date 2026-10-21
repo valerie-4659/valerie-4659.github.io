@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Valerie</title>
-<meta name="description" content="Valerie - stories, songs and images. Find me on X, YouTube, Civitai, itch.io and GitHub.">
+<meta name="description" content="Valerie - stories, songs and images. Find me on X, YouTube, Suno, Civitai, itch.io and GitHub.">
 <link rel="canonical" href="https://valerie-4659.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://valerie-4659.github.io/">
@@ -13,7 +13,7 @@
 <meta property="og:image" content="https://valerie-4659.github.io/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Valerie - red hair, cat ears, and the fox V">
+<meta property="og:image:alt" content="Valerie - red hair, cat ears, and the cat-eared V">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@valerie_4659">
 <meta name="twitter:title" content="Valerie">
@@ -172,6 +172,7 @@ h1 .drip path:first-child { transform-origin: 50% 0; animation: drip 2.2s 1.2s v
 .links li:nth-child(3) { animation-delay: .89s; }
 .links li:nth-child(4) { animation-delay: .96s; }
 .links li:nth-child(5) { animation-delay: 1.03s; }
+.links li:nth-child(6) { animation-delay: 1.10s; }
 
 .links a {
   position: relative;
@@ -275,6 +276,84 @@ footer {
 .note { margin: 12px 0 0; font-size: 13px; color: var(--muted); }
 .note a { color: var(--cream); text-underline-offset: 3px; text-decoration-color: rgba(238,228,211,.35); }
 .note a:hover { color: var(--lav); }
+/* open tabs */
+.browser { position: relative; }
+.tabstrip { display: flex; gap: 4px; padding: 0 6px; overflow-x: auto; scrollbar-width: none; }
+.tabstrip::-webkit-scrollbar { display: none; }
+.tab { all: unset; box-sizing: border-box; position: relative; display: flex; align-items: center; gap: 9px;
+  min-width: 0; flex: 0 1 220px; padding: 11px 12px 11px 14px; border-radius: 12px 12px 0 0;
+  background: rgba(238,228,211,.04); color: var(--muted); font-size: 14px; cursor: inherit;
+  transition: background .3s, color .3s; }
+.tab:hover { background: rgba(238,228,211,.08); color: var(--cream); }
+.tab[aria-selected="true"] { background: #16141f; color: var(--cream); }
+.tab:focus-visible { outline: 2px solid var(--lav); outline-offset: -2px; }
+.tname .short { display: none; }
+.tname { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.x { flex: none; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-size: 15px; line-height: 1;
+  color: var(--muted); transition: background .2s, color .2s; }
+.x:hover { background: rgba(211,20,28,.25); color: var(--cream); }
+.fav { flex: none; width: 10px; height: 10px; border-radius: 3px; }
+.fav-lav { background: var(--lav); }
+.fav-teal { background: var(--teal); }
+.fav-audio { width: 12px; height: 12px; border-radius: 0; display: flex; gap: 2px; align-items: flex-end; }
+.fav-audio i { flex: 1; background: var(--red); border-radius: 1px; height: 40%; animation: eq 1s ease-in-out infinite; }
+.fav-audio i:nth-child(2) { animation-delay: -.35s; } .fav-audio i:nth-child(3) { animation-delay: -.7s; }
+.panel { background: #16141f; border-radius: 0 12px 12px 12px; padding: 18px clamp(18px, 2.4vw, 28px) 20px;
+  box-shadow: 0 0 0 1px rgba(238,228,211,.06), 0 30px 70px -40px rgba(0,0,0,.9); }
+.addr { display: inline-block; margin-bottom: 16px; padding: 6px 14px; border-radius: 999px; background: rgba(9,9,12,.6);
+  color: var(--muted); font-size: 13px; }
+.panel p { margin: 0; color: var(--cream); line-height: 1.65; max-width: 56ch; }
+.pfoot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 20px; margin-top: 18px; font-size: 14px; }
+.status { color: var(--muted); }
+.pfoot a { color: var(--cream); text-underline-offset: 4px; text-decoration-color: var(--red); }
+.pfoot a:hover { color: var(--lav); }
+.nope { position: absolute; right: 8px; top: -30px; margin: 0; font-size: 13px; color: var(--lav); opacity: 0; transition: opacity .4s; pointer-events: none; }
+.nope.show { opacity: 1; }
+.tab.shake { animation: shake .45s ease; }
+@keyframes shake { 20% { transform: translateX(-4px) rotate(-1deg); } 40% { transform: translateX(4px) rotate(1deg); } 60% { transform: translateX(-3px); } 80% { transform: translateX(2px); } }
+
+/* gallery */
+.gallery { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: clamp(44px, 5vw, 84px); gap: 10px; }
+.gallery li { position: relative; overflow: hidden; border-radius: 4px; background: #121218; }
+.g-wide { grid-column: span 4; grid-row: span 3; }
+.g-tall { grid-column: span 2; grid-row: span 3; }
+.g-half { grid-column: span 3; grid-row: span 5; }
+.gallery li:nth-child(3) { grid-column: span 2; }
+.gallery button { all: unset; display: block; width: 100%; height: 100%; cursor: inherit; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1s var(--ease), filter .5s; filter: saturate(.92); }
+.gallery li::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(238,228,211,.08); pointer-events: none; transition: box-shadow .4s; }
+.gallery button:hover img, .gallery button:focus-visible img { transform: scale(1.045); filter: saturate(1.05); }
+.gallery li:has(button:hover)::after, .gallery li:has(button:focus-visible)::after { box-shadow: inset 0 0 0 2px var(--red); }
+.g-closeup img { object-position: 40% 40%; }
+
+/* lightbox */
+.lightbox { padding: 0; border: 0; background: transparent; max-width: 100vw; max-height: 100vh; width: 100vw; height: 100vh; overflow: hidden; }
+.lightbox::backdrop { background: rgba(5,5,8,.92); backdrop-filter: blur(6px); }
+.lightbox[open] { display: grid; place-items: center; animation: lb-in .4s var(--ease); }
+@keyframes lb-in { from { opacity: 0; transform: scale(.98); } }
+.lightbox img { max-width: min(92vw, 1400px); max-height: 86vh; object-fit: contain; border-radius: 4px; box-shadow: 0 40px 120px -20px #000; }
+.lb-btn { all: unset; position: fixed; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%;
+  color: var(--cream); background: rgba(238,228,211,.08); font-size: 28px; line-height: 1; cursor: inherit; transition: background .3s, color .3s; }
+.lb-btn:hover, .lb-btn:focus-visible { background: var(--red); color: var(--cream); }
+.lb-close { top: 20px; right: 20px; }
+.lb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
+.lb-count { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); color: var(--muted); font-size: 13px; }
+@media (max-width: 820px) {
+  .tname .long { display: none; } .tname .short { display: inline; }
+  .tab { padding: 10px 9px 10px 11px; gap: 7px; font-size: 13.5px; }
+  .x { width: 16px; }
+}
+@media (max-width: 480px) {
+  .x { display: none; }
+  .g-wide { grid-column: span 6; }
+  .g-tall { grid-column: span 3; grid-row: span 4; }
+  .gallery li:nth-child(3) { grid-column: span 3; }
+  .g-half { grid-column: span 3; grid-row: span 5; }
+  .lb-prev, .lb-next { top: auto; bottom: 14px; transform: none; }
+  .lb-prev { left: 16px; } .lb-next { right: 16px; }
+}
 /* ink-drop cursor on devices with a mouse */
 @media (pointer: fine) {
   html, body { cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2220%22%20height%3D%2228%22%20viewBox%3D%220%200%2020%2028%22%3E%3Cpath%20d%3D%22M10%201.5C10%201.5%202%2011.5%202%2017.5a8%208%200%200%200%2016%200C18%2011.5%2010%201.5%2010%201.5Z%22%20fill%3D%22%23D3141C%22%20stroke%3D%22%2309090C%22%20stroke-width%3D%221.5%22/%3E%3Cpath%20d%3D%22M6%2017.5a4%204%200%200%201%202.5-3.7%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.4%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.6%22/%3E%3C/svg%3E") 10 2, auto; }
@@ -336,25 +415,74 @@ footer {
     <nav aria-label="Find me">
       <ul class="links">
         <li><a href="https://x.com/valerie_4659"><span class="name">X</span><span class="what">Stories &amp; essays</span></a></li>
-        <li><a href="https://www.youtube.com/@Valerie_motionart"><span class="name">YouTube</span><span class="what">My songs</span></a></li>
+        <li><a href="https://www.youtube.com/@Valerie_motionart"><span class="name">YouTube</span><span class="what">Music videos</span></a></li>
+        <li><a href="https://suno.com/@valerie_4659"><span class="name">Suno</span><span class="what">All my songs</span></a></li>
         <li><a href="https://civitai.red/user/valerie_4659"><span class="name">Civitai</span><span class="what">Images &amp; models</span></a></li>
-        <li><a href="https://valerie-4659.itch.io/"><span class="name">itch.io</span><span class="what">Downloads</span></a></li>
-        <li><a href="https://github.com/valerie-4659"><span class="name">GitHub</span><span class="what">Tools &amp; code</span></a></li>
+        <li><a href="https://valerie-4659.itch.io/"><span class="name">itch.io</span><span class="what">My apps</span></a></li>
+        <li><a href="https://github.com/valerie-4659"><span class="name">GitHub</span><span class="what">Code &amp; releases</span></a></li>
       </ul>
     </nav>
 
+    <section class="block" aria-labelledby="tabs-h">
+      <h2 id="tabs-h">Currently open tabs<span class="hint">Things my brain refuses to close.</span></h2>
+      <div class="browser">
+        <div class="tabstrip" role="tablist" aria-label="Open tabs">
+          <button class="tab" role="tab" id="tab-1" aria-selected="true" aria-controls="panel-1"><span class="fav fav-lav" aria-hidden="true"></span><span class="tname"><span class="long">Prompting Helper</span><span class="short">Prompting</span></span><span class="x" aria-hidden="true">&times;</span></button>
+          <button class="tab" role="tab" id="tab-2" aria-selected="false" aria-controls="panel-2" tabindex="-1"><span class="fav fav-teal" aria-hidden="true"></span><span class="tname"><span class="long">Crosspost Helper</span><span class="short">Crosspost</span></span><span class="x" aria-hidden="true">&times;</span></button>
+          <button class="tab" role="tab" id="tab-3" aria-selected="false" aria-controls="panel-3" tabindex="-1"><span class="fav fav-audio" aria-hidden="true"><i></i><i></i><i></i></span><span class="tname">New song</span><span class="x" aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+          <div class="addr">brain://prompting-helper</div>
+          <p>Build, manage and reuse prompts for character-driven AI imagery. Writing one good prompt is easy. Writing the same character twenty times and having her still look like herself - that&#8217;s the hard part, and that&#8217;s what this is for.</p>
+          <div class="pfoot"><span class="status">Status: still tinkering</span><a href="https://valerie-4659.itch.io/sd-prompt-manager">Get it on itch.io</a></div>
+        </div>
+        <div class="panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+          <div class="addr">brain://crosspost-helper</div>
+          <p>A local-first image library that sends my pictures to all my places at once. Your library stays on your machine, and nothing leaves it unless you say so. Less copy-pasting, more making.</p>
+          <div class="pfoot"><span class="status">Status: polishing the next release</span><a href="https://valerie-4659.itch.io/crossposthelper">Get it on itch.io</a></div>
+        </div>
+        <div class="panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+          <div class="addr">brain://untitled-song</div>
+          <p>A new song is taking shape. No title yet, just a melody that follows me around and won&#8217;t leave me alone. It&#8217;ll be done when it&#8217;s done - or when it finally lets me sleep.</p>
+          <div class="pfoot"><span class="status">Status: humming, scribbling, rewriting</span><a href="https://suno.com/@valerie_4659">Hear the finished ones</a></div>
+        </div>
+        <p class="nope" aria-live="polite"></p>
+      </div>
+    </section>
+
     <section class="block" aria-labelledby="song-h">
       <h2 id="song-h">Latest song<span class="hint">Fresh out of my head and into your ears.</span></h2>
-      <div class="player" id="player" data-video="U3F1r2V8xF8">
-        <button class="play-card" type="button" aria-label="Play Liar In My Voice, official music video">
+      <div class="player" id="player" data-video="EsQhzidI6Hw">
+        <button class="play-card" type="button" aria-label="Play Silence Has Hands, official music video">
           <img src="song.webp" alt="" width="900" height="842" loading="lazy">
           <span class="play" aria-hidden="true"><svg viewBox="0 0 20 22"><path d="M2 1.5v19l17-9.5z"/></svg></span>
-          <span class="song-meta"><span class="song-title">Liar In My Voice</span><span class="song-sub">Official music video, 3:06</span></span>
+          <span class="song-meta"><span class="song-title">Silence Has Hands</span><span class="song-sub">Official music video, 4:14</span></span>
           <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
         </button>
       </div>
-      <p class="note">The video loads from YouTube once you press play. Or <a href="https://www.youtube.com/watch?v=U3F1r2V8xF8">watch it on YouTube</a>.</p>
+      <p class="note">The video loads from YouTube once you press play. Or <a href="https://www.youtube.com/watch?v=EsQhzidI6Hw">watch it on YouTube</a>.</p>
     </section>
+
+    <section class="block" aria-labelledby="gal-h">
+      <h2 id="gal-h">A few pictures<span class="hint">The ones that sat still long enough to be framed.</span></h2>
+      <ul class="gallery">
+          <li class="g-wide"><button type="button" data-full="blossom.webp" aria-label="Open image: A girl with cat ears under a cherry tree in full bloom, a red moon behind her"><img src="blossom-t.webp" alt="A girl with cat ears under a cherry tree in full bloom, a red moon behind her" loading="lazy" decoding="async"></button></li>
+          <li class="g-tall"><button type="button" data-full="sequins.webp" aria-label="Open image: Valerie in a black sequin gown with cat ears and tail, surrounded by photographers"><img src="sequins-t.webp" alt="Valerie in a black sequin gown with cat ears and tail, surrounded by photographers" loading="lazy" decoding="async"></button></li>
+          <li class="g-tall"><button type="button" data-full="freckles.webp" aria-label="Open image: Close portrait of Valerie with copper braids, freckles and silver hoops"><img src="freckles-t.webp" alt="Close portrait of Valerie with copper braids, freckles and silver hoops" loading="lazy" decoding="async"></button></li>
+          <li class="g-wide"><button type="button" data-full="closeup.webp" aria-label="Open image: Extreme close-up of a face with lavender lips, glossy pink and blue eyeshadow and ink splatter"><img src="closeup-t.webp" alt="Extreme close-up of a face with lavender lips, glossy pink and blue eyeshadow and ink splatter" loading="lazy" decoding="async"></button></li>
+          <li class="g-half"><button type="button" data-full="butterflies.webp" aria-label="Open image: Valerie in a black ruffled gown in a meadow, dark butterflies rising around her"><img src="butterflies-t.webp" alt="Valerie in a black ruffled gown in a meadow, dark butterflies rising around her" loading="lazy" decoding="async"></button></li>
+          <li class="g-half"><button type="button" data-full="halo.webp" aria-label="Open image: Valerie with eyes closed, flowers in red hair, turquoise jewels and ornate tattoos before a golden halo"><img src="halo-t.webp" alt="Valerie with eyes closed, flowers in red hair, turquoise jewels and ornate tattoos before a golden halo" loading="lazy" decoding="async"></button></li>
+      </ul>
+      <p class="note">There are many more on <a href="https://civitai.red/user/valerie_4659">Civitai</a>.</p>
+    </section>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+      <img id="lb-img" alt="">
+      <button class="lb-btn lb-close" type="button" aria-label="Close">&times;</button>
+      <button class="lb-btn lb-prev" type="button" aria-label="Previous image">&#8249;</button>
+      <button class="lb-btn lb-next" type="button" aria-label="Next image">&#8250;</button>
+      <span class="lb-count" id="lb-count"></span>
+    </dialog>
 
     <footer><span>&copy; 2026 Valerie</span><span>No cookies. No trackers.</span></footer>
   </main>
@@ -462,12 +590,68 @@ document.querySelector("#player .play-card")?.addEventListener("click", () => {
   const box = document.getElementById("player"), id = box.dataset.video;
   const f = document.createElement("iframe");
   f.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&modestbranding=1";
-  f.title = "Liar In My Voice - official music video";
+  f.title = "Silence Has Hands - official music video";
   f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
   f.allowFullscreen = true;
   f.referrerPolicy = "strict-origin-when-cross-origin";
   box.replaceChildren(f);
 });
+</script>
+<script>
+// open tabs: switch panels, refuse to close
+(() => {
+  const tabs = [...document.querySelectorAll('.tab')];
+  const nope = document.querySelector('.nope');
+  const lines = ["Nice try. This tab stays open.", "Closing tabs? In this brain?", "Nope. It lives here now."];
+  let n = 0, t;
+  function select(tab) {
+    tabs.forEach(x => {
+      const on = x === tab;
+      x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', e => {
+      if (e.target.closest('.x')) {
+        tab.classList.remove('shake'); void tab.offsetWidth; tab.classList.add('shake');
+        nope.textContent = lines[n++ % lines.length]; nope.classList.add('show');
+        clearTimeout(t); t = setTimeout(() => nope.classList.remove('show'), 2200);
+        return;
+      }
+      select(tab);
+    });
+    tab.addEventListener('keydown', e => {
+      const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      const next = tabs[(i + d + tabs.length) % tabs.length]; select(next); next.focus(); e.preventDefault();
+    });
+  });
+})();
+
+// gallery lightbox
+(() => {
+  const dlg = document.getElementById('lightbox'); if (!dlg) return;
+  const img = document.getElementById('lb-img'), count = document.getElementById('lb-count');
+  const items = [...document.querySelectorAll('.gallery button')];
+  let i = 0;
+  function show(k) {
+    i = (k + items.length) % items.length;
+    const b = items[i], th = b.querySelector('img');
+    img.src = b.dataset.full; img.alt = th.alt;
+    count.textContent = (i + 1) + ' of ' + items.length;
+  }
+  items.forEach((b, k) => b.addEventListener('click', () => { show(k); dlg.showModal(); }));
+  dlg.querySelector('.lb-close').addEventListener('click', () => dlg.close());
+  dlg.querySelector('.lb-prev').addEventListener('click', () => show(i - 1));
+  dlg.querySelector('.lb-next').addEventListener('click', () => show(i + 1));
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') show(i + 1);
+    if (e.key === 'ArrowLeft') show(i - 1);
+  });
+  dlg.addEventListener('close', () => items[i].focus());
+})();
 </script>
 </body>
 </html>
