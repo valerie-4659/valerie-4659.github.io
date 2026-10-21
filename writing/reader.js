@@ -30,7 +30,7 @@
     const heads = links.map(a => document.getElementById(a.hash.slice(1))).filter(Boolean);
     if (toc) {
       const det = toc.querySelector('details');
-      const wide = matchMedia('(min-width: 1240px)');
+      const wide = matchMedia('(min-width: 1360px)');
       const fit = () => { det.open = wide.matches; };
       fit();
       wide.addEventListener ? wide.addEventListener('change', fit) : wide.addListener(fit);

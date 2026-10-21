@@ -172,10 +172,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--lav); outline-o
 .atoc a.is-on { color: var(--cream); }
 .atoc a.is-on::before { color: var(--red); }
 
-@media (min-width: 1240px) {
+@media (min-width: 1360px) {
   .bodywrap.has-toc { display: grid; grid-template-columns: 1fr minmax(0, var(--col)) 1fr; column-gap: 56px; align-items: start; }
   .bodywrap.has-toc .body { grid-column: 2; grid-row: 1; margin: 0; }
-  .bodywrap.has-toc .atoc { grid-column: 1; grid-row: 1; justify-self: end; width: 240px; margin: 0; position: sticky; top: 36px; max-height: calc(100vh - 72px); overflow: auto; scrollbar-width: none; }
+  .bodywrap.has-toc .atoc { grid-column: 1; grid-row: 1; justify-self: start; width: 240px; margin: 0; position: sticky; top: 36px; max-height: calc(100vh - 72px); overflow: auto; scrollbar-width: none; }
+  .bodywrap.has-toc .body figure { width: clamp(var(--col), 100vw - 608px, 900px); }
   .atoc details { border: 0; }
   .atoc summary { padding: 0 0 12px; pointer-events: none; }
   .atoc summary::after { display: none; }
