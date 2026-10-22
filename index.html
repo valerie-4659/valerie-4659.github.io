@@ -255,6 +255,46 @@ footer {
 .block h2 .hint { display: block; margin-top: 8px; font-family: var(--text); font-style: normal;
   font-size: 15px; letter-spacing: 0; color: var(--muted); -webkit-text-stroke: 0; }
 
+/* latest writing */
+.latest { display: block; text-decoration: none; color: inherit; border-radius: 6px; overflow: hidden; background: #16141f;
+  box-shadow: 0 30px 80px -30px rgba(0,0,0,.8), 0 0 0 1px var(--line); }
+.latest-img { display: block; aspect-ratio: 2.4 / 1; overflow: hidden; background: #0f1424; }
+.latest-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s var(--ease); }
+.latest-body { display: block; padding: clamp(18px, 2.6vw, 30px) clamp(18px, 3vw, 34px) clamp(20px, 2.8vw, 30px); }
+.latest-meta { display: block; font-size: 13px; color: var(--muted); }
+.latest-meta b { font-weight: 500; color: var(--red); }
+.latest-title { display: block; margin-top: 10px; font-family: var(--display); font-style: italic; font-weight: 500;
+  font-variation-settings: "opsz" 24; -webkit-text-stroke: .008em currentColor; font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.02; letter-spacing: -.02em; text-wrap: balance; transition: color .3s; }
+.latest-quote { display: block; margin-top: 16px; padding-left: 16px; border-left: 2px solid var(--red); max-width: 52ch;
+  font-family: var(--display); font-style: italic; font-variation-settings: "opsz" 24; font-size: clamp(18px, 1.6vw, 21px); line-height: 1.35; color: var(--cream); }
+.latest-more { display: inline-block; margin-top: 18px; font-size: 14px; text-decoration: underline; text-decoration-color: var(--red);
+  text-underline-offset: 4px; transition: color .3s; }
+.latest:hover .latest-img img, .latest:focus-visible .latest-img img { transform: scale(1.03); }
+.latest:hover .latest-title, .latest:focus-visible .latest-title, .latest:hover .latest-more { color: var(--lav); }
+.latest:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; }
+
+/* app releases */
+.apps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.apps li { border-bottom: 1px solid var(--line); }
+.apps li[hidden] { display: none; }
+.apps a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 4px 18px; padding: 16px 2px 15px;
+  text-decoration: none; color: inherit; }
+.app-name { font-family: var(--display); font-weight: 500; font-variation-settings: "opsz" 24; -webkit-text-stroke: .006em currentColor;
+  font-size: clamp(21px, 2vw, 26px); line-height: 1.1; transition: color .3s; }
+.app-ver { grid-row: span 2; align-self: center; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.app-tag { font-size: 13px; font-variant-numeric: tabular-nums; color: var(--cream); padding: 2px 9px; border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(182,156,230,.45); white-space: nowrap; }
+.app-when { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.app-line { font-size: 14px; color: var(--muted); }
+.apps li.is-new .app-tag { background: var(--red); box-shadow: none; }
+.apps li.is-new .app-when { color: var(--lav); }
+.apps a:hover .app-name, .apps a:focus-visible .app-name { color: var(--red); font-style: italic; }
+.apps a:focus-visible { outline: 2px solid var(--lav); outline-offset: 2px; }
+.apps-more { all: unset; box-sizing: border-box; margin-top: 14px; font-size: 14px; color: var(--cream); cursor: inherit;
+  text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 4px; }
+.apps-more:hover, .apps-more:focus-visible { color: var(--lav); }
+
 /* latest song */
 .player { position: relative; aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; background: #0f1424;
   box-shadow: 0 30px 80px -30px rgba(0,0,0,.8), 0 0 0 1px var(--line); }
@@ -461,6 +501,20 @@ footer {
       </div>
     </section>
 
+    <section class="block" aria-labelledby="art-h">
+      <h2 id="art-h">Latest writing<span class="hint">Still warm from the keyboard.</span></h2>
+      <a class="latest" href="writing/thats-me-valerie-in-seven-variants.html">
+        <span class="latest-img"><img src="writing/img/2111776701554237489-cover.webp" alt="" loading="lazy" decoding="async"></span>
+        <span class="latest-body">
+          <span class="latest-meta"><b>Who I am</b>, 18 October 2026, 21 min read</span>
+          <span class="latest-title">That&#x27;s Me: Valerie in Seven Variants</span>
+          <span class="latest-quote">Because loving someone a little isn&#x27;t a small love. It&#x27;s a big disappointment that just hasn&#x27;t dared to show up yet.</span>
+          <span class="latest-more">Read it</span>
+        </span>
+      </a>
+      <p class="note">All 55 pieces live in <a href="writing/">Writing</a>.</p>
+    </section>
+
     <section class="block" aria-labelledby="song-h">
       <h2 id="song-h">Latest song<span class="hint">Fresh out of my head and into your ears.</span></h2>
       <div class="player" id="player" data-video="fuqgyl8s_LE">
@@ -472,6 +526,13 @@ footer {
         </button>
       </div>
       <p class="note">The video loads from YouTube once you press play. Or <a href="https://www.youtube.com/watch?v=fuqgyl8s_LE">watch it on YouTube</a>.</p>
+    </section>
+
+    <section class="block" aria-labelledby="apps-h">
+      <h2 id="apps-h">Fresh from the workshop<span class="hint">The newest releases of the little tools I build.</span></h2>
+      <ol class="apps" id="apps"><li data-repo="promptinghelper-app" data-tag="v4.3.205" data-date="2026-10-20"><a href="https://github.com/valerie-4659/promptinghelper-app/releases/latest"><span class="app-name">Prompting Helper</span><span class="app-ver"><span class="app-tag">v4.3.205</span><time class="app-when" datetime="2026-10-20">20 Oct 2026</time></span><span class="app-line">Build, manage and reuse prompts for character-driven AI imagery.</span></a></li><li data-repo="crossposthelper-app" data-tag="v1.70.1" data-date="2026-10-15"><a href="https://github.com/valerie-4659/crossposthelper-app/releases/latest"><span class="app-name">Crosspost Helper</span><span class="app-ver"><span class="app-tag">v1.70.1</span><time class="app-when" datetime="2026-10-15">15 Oct 2026</time></span><span class="app-line">A local-first image library that posts to all my places at once.</span></a></li><li data-repo="articlehelper-app" data-tag="v2.13.1" data-date="2026-09-09"><a href="https://github.com/valerie-4659/articlehelper-app/releases/latest"><span class="app-name">ArticleHelper</span><span class="app-ver"><span class="app-tag">v2.13.1</span><time class="app-when" datetime="2026-09-09">9 Sep 2026</time></span><span class="app-line">Write and publish CivitAI articles and bounties, offline.</span></a></li><li data-repo="artqueue-app" data-tag="v2.3.1" data-date="2026-08-25"><a href="https://github.com/valerie-4659/artqueue-app/releases/latest"><span class="app-name">ArtQueue</span><span class="app-ver"><span class="app-tag">v2.3.1</span><time class="app-when" datetime="2026-08-25">25 Aug 2026</time></span><span class="app-line">Queue image downloads and let AI sort them into folders.</span></a></li><li data-repo="xhelper-app" data-tag="v0.7.0" data-date="2026-08-21"><a href="https://github.com/valerie-4659/xhelper-app/releases/latest"><span class="app-name">XHelper</span><span class="app-ver"><span class="app-tag">v0.7.0</span><time class="app-when" datetime="2026-08-21">21 Aug 2026</time></span><span class="app-line">A reply assistant for X that never sends anything without me.</span></a></li><li data-repo="civithelper-app" data-tag="v1.13.2" data-date="2026-08-13" hidden><a href="https://github.com/valerie-4659/civithelper-app/releases/latest"><span class="app-name">Civit Helper</span><span class="app-ver"><span class="app-tag">v1.13.2</span><time class="app-when" datetime="2026-08-13">13 Aug 2026</time></span><span class="app-line">A browser extension to react to and save many CivitAI images at once.</span></a></li><li data-repo="metadatahelper-app" data-tag="v1.3.0" data-date="2026-08-12" hidden><a href="https://github.com/valerie-4659/metadatahelper-app/releases/latest"><span class="app-name">SD Metadata Migration Tool</span><span class="app-ver"><span class="app-tag">v1.3.0</span><time class="app-when" datetime="2026-08-12">12 Aug 2026</time></span><span class="app-line">Copies AI generation metadata from one image to another.</span></a></li><li data-repo="imageworkflowhelper-app" data-tag="v0.5.1" data-date="2026-08-12" hidden><a href="https://github.com/valerie-4659/imageworkflowhelper-app/releases/latest"><span class="app-name">Image Workflow Helper</span><span class="app-ver"><span class="app-tag">v0.5.1</span><time class="app-when" datetime="2026-08-12">12 Aug 2026</time></span><span class="app-line">Tracks AI image jobs from backlog to final.</span></a></li></ol>
+      <button class="apps-more" type="button">Show all 8 apps</button>
+      <p class="note">Downloads and release notes on <a href="https://github.com/valerie-4659">GitHub</a>, the bigger ones also on <a href="https://valerie-4659.itch.io/">itch.io</a>.</p>
     </section>
 
     <section class="block" aria-labelledby="gal-h">
@@ -686,6 +747,58 @@ document.querySelector("#player .play-card")?.addEventListener("click", () => {
     if (e.key === 'ArrowLeft') show(i - 1);
   });
   dlg.addEventListener('close', () => items[i].focus());
+})();
+</script>
+<script>
+// App releases: the build bakes in a snapshot, the browser asks GitHub for anything newer.
+(() => {
+  const list = document.getElementById('apps');
+  if (!list) return;
+  const SHOW = 5, DAY = 864e5;
+  const rel = (iso) => {
+    const now = new Date(), [y, m, dd] = iso.split('-').map(Number);
+    const d = Math.round((Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - Date.UTC(y, m - 1, dd)) / DAY);
+    if (d < 1) return 'today';
+    if (d < 2) return 'yesterday';
+    if (d < 14) return d + ' days ago';
+    if (d < 60) return Math.round(d / 7) + ' weeks ago';
+    return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  };
+  const paint = () => {
+    const items = [...list.children].sort((a, b) => b.dataset.date.localeCompare(a.dataset.date));
+    items.forEach((li, n) => {
+      list.appendChild(li);
+      li.querySelector('.app-tag').textContent = li.dataset.tag;
+      const t = li.querySelector('time');
+      t.dateTime = li.dataset.date; t.textContent = rel(li.dataset.date);
+      li.classList.toggle('is-new', Date.now() - new Date(li.dataset.date + 'T00:00:00') < 8 * DAY);
+      if (!list.dataset.open) li.hidden = n >= SHOW;
+    });
+  };
+  const more = document.querySelector('.apps-more');
+  if (more) more.addEventListener('click', () => { list.dataset.open = '1'; [...list.children].forEach(li => li.hidden = false); more.remove(); });
+  paint();
+  const KEY = 'valerie-apps';
+  let cache = null;
+  try { cache = JSON.parse(sessionStorage.getItem(KEY)); } catch (e) {}
+  const apply = (data) => {
+    data.forEach(({ repo, tag, date }) => {
+      const li = list.querySelector(`[data-repo="${repo}"]`);
+      if (li && tag && date && date >= li.dataset.date) { li.dataset.tag = tag; li.dataset.date = date; }
+    });
+    paint();
+  };
+  if (cache && Date.now() - cache.t < 30 * 6e4) return apply(cache.data);
+  Promise.all([...list.children].map(li =>
+    fetch(`https://api.github.com/repos/valerie-4659/${li.dataset.repo}/releases/latest`, { referrerPolicy: 'no-referrer' })
+      .then(r => r.ok ? r.json() : null)
+      .then(j => j && { repo: li.dataset.repo, tag: j.tag_name, date: (j.published_at || '').slice(0, 10) })
+      .catch(() => null)
+  )).then(res => {
+    const data = res.filter(Boolean);
+    try { sessionStorage.setItem(KEY, JSON.stringify({ t: Date.now(), data })); } catch (e) {}
+    apply(data);
+  });
 })();
 </script>
 </body>
