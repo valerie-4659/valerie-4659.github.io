@@ -463,15 +463,15 @@ footer {
 
     <section class="block" aria-labelledby="song-h">
       <h2 id="song-h">Latest song<span class="hint">Fresh out of my head and into your ears.</span></h2>
-      <div class="player" id="player" data-video="EsQhzidI6Hw">
-        <button class="play-card" type="button" aria-label="Play Silence Has Hands, official music video">
-          <img src="song.webp" alt="" width="900" height="842" loading="lazy">
+      <div class="player" id="player" data-video="fuqgyl8s_LE">
+        <button class="play-card" type="button" aria-label="Play The Time Between, official music video">
+          <img src="song.webp" alt="" width="880" height="688" loading="lazy">
           <span class="play" aria-hidden="true"><svg viewBox="0 0 20 22"><path d="M2 1.5v19l17-9.5z"/></svg></span>
-          <span class="song-meta"><span class="song-title">Silence Has Hands</span><span class="song-sub">Official music video, 4:14</span></span>
+          <span class="song-meta"><span class="song-title">The Time Between</span><span class="song-sub">Official music video, 3:40</span></span>
           <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
         </button>
       </div>
-      <p class="note">The video loads from YouTube once you press play. Or <a href="https://www.youtube.com/watch?v=EsQhzidI6Hw">watch it on YouTube</a>.</p>
+      <p class="note">The video loads from YouTube once you press play. Or <a href="https://www.youtube.com/watch?v=fuqgyl8s_LE">watch it on YouTube</a>.</p>
     </section>
 
     <section class="block" aria-labelledby="gal-h">
@@ -625,7 +625,7 @@ document.querySelector("#player .play-card")?.addEventListener("click", () => {
   const box = document.getElementById("player"), id = box.dataset.video;
   const f = document.createElement("iframe");
   f.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&modestbranding=1";
-  f.title = "Silence Has Hands - official music video";
+  f.title = "The Time Between - official music video";
   f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
   f.allowFullscreen = true;
   f.referrerPolicy = "strict-origin-when-cross-origin";
